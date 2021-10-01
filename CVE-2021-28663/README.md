@@ -1,0 +1,17 @@
+# CVE-2021-28663
+A basic PoC leak for CVE-2021-28663 (Internal of the Android kernel backdoor vulnerability)
+
+This is a basic PoC for CVE-2021-28663. A design flaw in Mali GPU Android Kernel Driver.
+
+1. Create a `GPU_VA` and also `mmap` to it so we can get virtual addr for phys pages.
+2. Create an alias for phy pages, but don't do `mmap` so `gpu_mapping` remains as 1
+3. Change flags of `GPU_VA` to `BASE_MEM_DONT_NEED`. Mali will make them evictable
+4. Since we have `reg` for aliased page, now we can `mmap` to it. This will give us RDONLY access from CPU
+
+## Example run:
+
+![Example run CVE-2021-28663](ss/1.png)
+
+![Example run CVE-2021-28663](ss/2.png)
+
+![Example run CVE-2021-28663](ss/3.png)

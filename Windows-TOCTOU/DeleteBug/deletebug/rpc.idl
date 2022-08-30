@@ -1,0 +1,74 @@
+[
+	uuid(bf4dc912-e52f-4904-8ebe-9317c1bdd497),
+	version(1.0),
+]
+interface DefaultIfName
+{
+
+	typedef struct Struct_10_t
+	{
+		/* enum_16 */ short 	StructMember0;
+		[unique][string] wchar_t* 	StructMember1;
+	}Struct_10_t;
+
+	typedef struct Struct_48_t
+	{
+		long 	StructMember0;
+		///* [DBG] FC_BOGUS_ARRAY */ [size_is()][length_is(arg_4294967295)] /*  */ struct Struct_10_t 	StructMember1[20];
+	}Struct_48_t;
+
+	typedef struct Struct_64_t
+	{
+		/* enum_16 */ short 	StructMember0;
+		/* enum_16 */ short 	StructMember1;
+		struct Struct_48_t 	StructMember2;
+	}Struct_64_t;
+
+	long Proc0_RpcDSSCreateSharedFileToken(
+		[in][string] wchar_t* arg_1,
+		[in]struct Struct_64_t* arg_2,
+		[in]/* enum_16 */ short arg_3,
+		[in]/* enum_16 */ short arg_4,
+		[out][ref][string] wchar_t** arg_5);
+
+	long Proc1_RpcDSSGetSharedFileName(
+		[in][string] wchar_t* arg_1,
+		[out][ref][string] wchar_t** arg_2);
+
+	long Proc2_RpcDSSGetSharingTokenOwner(
+		[in][string] wchar_t* arg_1,
+		[out][ref][string] wchar_t** arg_2);
+
+	long Proc3_RpcDSSGetSharingTokenInformation(
+		[in][string] wchar_t* arg_1,
+		[out][ref][string] wchar_t** arg_2,
+		[out][ref][string] wchar_t** arg_3,
+		[out][ref]/* enum_16 */ short *arg_4);
+
+	long Proc4_RpcDSSDelegateSharingToken(
+		[in][string] wchar_t* arg_1,
+		[in]struct Struct_48_t* arg_2);
+
+	long Proc5_RpcDSSRemoveSharingToken(
+		[in][string] wchar_t* arg_1);
+
+	long Proc6_RpcDSSOpenSharedFile(
+		[in][string] wchar_t* arg_1,
+		[in]long arg_2,
+		[out]hyper *arg_3);
+
+	long Proc7_RpcDSSMoveToSharedFile(
+		[in][string] wchar_t* arg_1,
+		[in][string] wchar_t* arg_2);
+
+	long Proc8_RpcDSSMoveFromSharedFile(
+		[in][string] wchar_t* arg_1,
+		[in][string] wchar_t* arg_2);
+
+	long Proc9_RpcDSSCopyFromSharedFile(
+		[in][string] wchar_t* arg_1,
+		[in][string] wchar_t* arg_2);
+
+	long Proc10_RpcDSSRemoveExpiredTokens(
+	);
+}
